@@ -1,40 +1,60 @@
-import React from 'react'
+import React from "react";
 
 const Manager = () => {
   return (
     <div>
+      <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]">
+        <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-green-400 opacity-20 blur-[100px]"></div>
+      </div>
 
-      <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"><div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-green-400 opacity-20 blur-[100px]"></div></div>
+      <div className="mycontainer">
+        <h1 className="text-4xl font-bold text-center">
+          <span className="text-green-500">&lt; </span>
+          <span>Pass</span>
+          <span className="text-green-400"> Op</span>
+          <span className="text-green-500"> /&gt;</span>
+        </h1>
+        <p className="text-green-900 text-lg text-center">
+          Your own password manager
+        </p>
 
-        <div className="mycontainer">
+        <div className="flex flex-col p-4 gap-5 items-center">
+          <input
+            placeholder="Enter website URL"
+            className="bg-white rounded-full border border-green-500 w-full px-4 py-1"
+            type="text"
+            name=""
+            id=""
+          />
+          <div className="flex w-full justify-between gap-4">
+            <input
+              placeholder="Enter Username"
+              className="bg-white rounded-full border border-green-500 w-1/2 px-4 py-1"
+              type="text"
+            />
 
-            <h1 className='text-4xl font-bold text-center'>
-              <span className='text-green-700'>&lt; </span>
-        <span>Pass</span>
-        <span className='text-green-500'> Op</span>
-        <span className='text-green-700'> /&gt;</span>
-            </h1>
-            <p className='text-green-900 text-lg text-center'>Your own password manager</p>
-
-            <div className="flex flex-col p-4 gap-5 items-center">
-            <input className='bg-white rounded-full border border-green-500 w-full px-4 py-1' type="text" name="" id="" />
-            <div className="flex w-full justify-between gap-4">
-                <input className='bg-white rounded-full border border-green-500 w-full px-4 py-1' type="text" />
-                <input className='bg-white rounded-full border border-green-500 w-full px-4 py-1' type="text" />
+            <div className="relative">
+              <input
+                placeholder="Enter Password"
+                className="bg-white rounded-full border border-green-500 w-full px-4 py-1"
+                type="text"
+              />
+              <span className="absolute right-0 top-1">
+                
+              </span>
             </div>
-            <button className='flex justify-center items-center bg-green-400 rounded-full px-4 py-2 w-fit hover:bg-green-300 gap-2'>Add Password
-              <lord-icon
-    src="https://cdn.lordicon.com/efxgwrkc.json"
-    trigger="hover"
-    >
-</lord-icon>
-            </button>
+          </div>
+          <button className="flex justify-center items-center bg-green-400 rounded-full px-6 py-2 w-fit hover:bg-green-300 gap-4 border-1 border-green-900">
+            Add Password
+            <lord-icon
+              src="https://cdn.lordicon.com/efxgwrkc.json"
+              trigger="hover"
+            ></lord-icon>
+          </button>
         </div>
-
-        </div>
-
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Manager
+export default Manager;

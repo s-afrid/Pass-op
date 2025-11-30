@@ -6,10 +6,10 @@ const Navbar = () => {
 
       <div className="mycontainer flex justify-around items-center px-4 py-5 h-14">
       <div className="logo font-bold text-2xl">
-        <span className='text-green-700'>&lt; </span>
+        <span className='text-green-500'>&lt; </span>
         <span>Pass</span>
-        <span className='text-green-500'> Op</span>
-        <span className='text-green-700'> /&gt;</span>
+        <span className='text-green-400'> Op</span>
+        <span className='text-green-500'> /&gt;</span>
         </div>
       <ul>
         <li className='flex gap-4'>
