@@ -1,6 +1,18 @@
 import React from "react";
+import { useRef } from "react";
 
 const Manager = () => {
+
+  const ref = useRef()
+  const showPassword = ()=>{
+    if(ref.current.src.includes("/icons/eye-slash.svg")){
+      ref.current.src = '/icons/eye.svg';
+    } else {
+ref.current.src = "/icons/eye-slash.svg";
+    }
+    
+  }
+
   return (
     <div>
       <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]">
@@ -39,8 +51,8 @@ const Manager = () => {
                 className="bg-white rounded-full border border-green-500 w-full px-4 py-1"
                 type="text"
               />
-              <span className="absolute right-0 top-1">
-                
+              <span className="absolute right-0 top-1 cursor-pointer" onClick={showPassword}>
+                <img ref={ref} className="pt-1 px-2" width={35} src="/icons/eye.svg" alt="show" />
               </span>
             </div>
           </div>
