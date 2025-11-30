@@ -16,13 +16,19 @@ const Manager = () => {
             </h1>
             <p className='text-green-900 text-lg text-center'>Your own password manager</p>
 
-            <div className="flex flex-col p-4 gap-5">
+            <div className="flex flex-col p-4 gap-5 items-center">
             <input className='bg-white rounded-full border border-green-500 w-full px-4 py-1' type="text" name="" id="" />
             <div className="flex w-full justify-between gap-4">
                 <input className='bg-white rounded-full border border-green-500 w-full px-4 py-1' type="text" />
                 <input className='bg-white rounded-full border border-green-500 w-full px-4 py-1' type="text" />
             </div>
-            <button>Add Password</button>
+            <button className='flex justify-center items-center bg-green-400 rounded-full px-4 py-2 w-fit hover:bg-green-300 gap-2'>Add Password
+              <lord-icon
+    src="https://cdn.lordicon.com/efxgwrkc.json"
+    trigger="hover"
+    >
+</lord-icon>
+            </button>
         </div>
 
         </div>
