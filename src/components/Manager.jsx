@@ -28,7 +28,6 @@ ref.current.src = "/icons/eye-slash.svg";
   const savePassword = ()=>{
     setpasswordArray([...passwordArray, form])
     localStorage.setItem("passwords", JSON.stringify([...passwordArray, form]))
-    console.log([...passwordArray, form])
   }
 
   const handleChange = (e)=>{
@@ -96,26 +95,34 @@ ref.current.src = "/icons/eye-slash.svg";
         </div>
 
         <div className="passwords">
-          <h2>Your passwords</h2>
-          <table className="w-full rounded-lg overflow-hidden">
+          <h2 className="font-bold text-2xl py-4">Your passwords</h2>
+          {passwordArray.length === 0 && <div>No passwords to show</div>}
+          {passwordArray.length != 0 && <table className="w-full rounded-lg overflow-hidden">
 
             <thead className=" bg-green-800 text-white">
               <tr>
-                <th className="">Site</th>
-                <th className="">Arttist</th>
-                <th className="">Year</th>
+                <th className="py-2">Site</th>
+                <th className="py-2">Username</th>
+                <th className="py-2">Password</th>
               </tr>
             </thead>
 
             <tbody className="bg-green-100">
-              <tr>
-                <td className="text-center">ahsdgiasudg0</td>
-                <td className="text-center">hgasduajksd</td>
-                <td className="text-center">aihcdioahisdc</td>
+              {passwordArray.map((item, index)=>{
+                return (
+                   <tr key={index}>
+                <td className="py-2 border border-white text-center"><a href={item.site} target="_blank">{item.site}</a></td>
+                <td className="py-2 border border-white text-center">{item.username}</td>
+                <td className="py-2 border border-white text-center">{item.password}</td>
               </tr>
+                )
+                
+              })}
+  
             </tbody>
 
-          </table>
+          </table>}
+          
         </div>
 
 
