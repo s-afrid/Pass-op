@@ -86,11 +86,12 @@ ref.current.src = "/icons/eye-slash.svg";
             </div>
           </div>
           <button onClick={savePassword} className="flex justify-center items-center bg-green-400 rounded-full px-6 py-2 w-fit hover:bg-green-300 gap-4 border-1 border-green-900">
-            Add Password
             <lord-icon
               src="https://cdn.lordicon.com/efxgwrkc.json"
               trigger="hover"
             ></lord-icon>
+            Add Password
+            
           </button>
         </div>
 
