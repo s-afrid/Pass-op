@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 const Manager = () => {
 
   const ref = useRef()
+  const passwordRef = useRef()
   const [form, setform] = useState({site: "", username: "", password: ""})
   const [passwordArray, setpasswordArray] = useState([])
 
@@ -17,7 +18,9 @@ const Manager = () => {
   }, [])
   
   const showPassword = ()=>{
+    passwordRef.current.type = "text"
     if(ref.current.src.includes("/icons/eye-slash.svg")){
+      passwordRef.current.type = "password"
       ref.current.src = '/icons/eye.svg';
     } else {
 ref.current.src = "/icons/eye-slash.svg";
@@ -73,11 +76,12 @@ ref.current.src = "/icons/eye-slash.svg";
 
             <div className="relative">
               <input
+              ref={passwordRef}
               value={form.password}
               onChange={handleChange}
                 placeholder="Enter Password"
                 className="bg-white rounded-full border border-green-500 w-full px-4 py-1"
-                type="text"
+                type="password"
                 name="password"
               />
               <span className="absolute right-0 top-1 cursor-pointer" onClick={showPassword}>
