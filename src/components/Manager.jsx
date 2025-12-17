@@ -94,6 +94,31 @@ ref.current.src = "/icons/eye-slash.svg";
             ></lord-icon>
           </button>
         </div>
+
+        <div className="passwords">
+          <h2>Your passwords</h2>
+          <table className="w-full rounded-lg overflow-hidden">
+
+            <thead className=" bg-green-800 text-white">
+              <tr>
+                <th className="">Site</th>
+                <th className="">Arttist</th>
+                <th className="">Year</th>
+              </tr>
+            </thead>
+
+            <tbody className="bg-green-100">
+              <tr>
+                <td className="text-center">ahsdgiasudg0</td>
+                <td className="text-center">hgasduajksd</td>
+                <td className="text-center">aihcdioahisdc</td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+
+
       </div>
     </div>
   );
