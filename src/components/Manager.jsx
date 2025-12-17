@@ -1,16 +1,25 @@
 import React from "react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const Manager = () => {
 
   const ref = useRef()
+  const [form, setform] = useState({site: "", username: "", password: ""})
   const showPassword = ()=>{
     if(ref.current.src.includes("/icons/eye-slash.svg")){
       ref.current.src = '/icons/eye.svg';
     } else {
 ref.current.src = "/icons/eye-slash.svg";
-    }
-    
+    }  
+  }
+
+
+  const savePassword = ()=>{
+
+  }
+
+  const handleChange = (e)=>{
+    setform({...form, [e.target.name]: e.target.value})
   }
 
   return (
@@ -32,31 +41,39 @@ ref.current.src = "/icons/eye-slash.svg";
 
         <div className="flex flex-col p-4 gap-5 items-center">
           <input
+            value={form.site}
+            onChange={handleChange}
             placeholder="Enter website URL"
             className="bg-white rounded-full border border-green-500 w-full px-4 py-1"
             type="text"
-            name=""
+            name="site"
             id=""
           />
           <div className="flex w-full justify-between gap-4">
             <input
+            value={form.username}
+            onChange={handleChange}
               placeholder="Enter Username"
               className="bg-white rounded-full border border-green-500 w-1/2 px-4 py-1"
               type="text"
+              name="username"
             />
 
             <div className="relative">
               <input
+              value={form.password}
+              onChange={handleChange}
                 placeholder="Enter Password"
                 className="bg-white rounded-full border border-green-500 w-full px-4 py-1"
                 type="text"
+                name="password"
               />
               <span className="absolute right-0 top-1 cursor-pointer" onClick={showPassword}>
                 <img ref={ref} className="pt-1 px-2" width={35} src="/icons/eye.svg" alt="show" />
               </span>
             </div>
           </div>
-          <button className="flex justify-center items-center bg-green-400 rounded-full px-6 py-2 w-fit hover:bg-green-300 gap-4 border-1 border-green-900">
+          <button onClick={savePassword} className="flex justify-center items-center bg-green-400 rounded-full px-6 py-2 w-fit hover:bg-green-300 gap-4 border-1 border-green-900">
             Add Password
             <lord-icon
               src="https://cdn.lordicon.com/efxgwrkc.json"
