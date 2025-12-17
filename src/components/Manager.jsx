@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRef, useState } from "react";
 
 const Manager = () => {
 
   const ref = useRef()
   const [form, setform] = useState({site: "", username: "", password: ""})
+  const [passwordArray, setpasswordArray] = useState([])
+
+
+  useEffect(() => {
+    let passwords = localStorage.getItem("passwords");
+    
+    if(passwords){
+      setpasswordArray(JSON.parse(passwords))
+    }
+  }, [])
+  
   const showPassword = ()=>{
     if(ref.current.src.includes("/icons/eye-slash.svg")){
       ref.current.src = '/icons/eye.svg';
@@ -15,7 +26,9 @@ ref.current.src = "/icons/eye-slash.svg";
 
 
   const savePassword = ()=>{
-
+    setpasswordArray([...passwordArray, form])
+    localStorage.setItem("passwords", JSON.stringify([...passwordArray, form]))
+    console.log([...passwordArray, form])
   }
 
   const handleChange = (e)=>{
