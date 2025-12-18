@@ -12,7 +12,7 @@ const Navbar = () => {
         <span className='text-green-500'> /&gt;</span>
         </div>
       
-      <button className='text-white bg-green-600 flex items-center my-3 px-1 rounded-full justify-center'>
+      <button className='text-white bg-green-600 flex items-center my-3 px-1 rounded-full justify-center ring-white ring-1'>
         <img className='invert py-2 px-2 w-10' src="icons/github.svg" alt="" />
         
         <span className='py-2 px-2'>GitHub</span>

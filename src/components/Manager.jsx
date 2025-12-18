@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useRef, useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 
 const Manager = () => {
   const ref = useRef();
@@ -16,19 +16,19 @@ const Manager = () => {
     }
   }, []);
 
-  const copyText = (text)=>{
+  const copyText = (text) => {
     navigator.clipboard.writeText(text);
-    toast.success('Copied to Clipboard!', {
-position: "top-left",
-autoClose: 5000,
-hideProgressBar: false,
-closeOnClick: false,
-pauseOnHover: true,
-draggable: true,
-progress: "",
-theme: "light",
-});
-  }
+    toast.success("Copied to Clipboard!", {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: "",
+      theme: "light",
+    });
+  };
 
   const showPassword = () => {
     passwordRef.current.type = "text";
@@ -52,16 +52,16 @@ theme: "light",
   return (
     <div>
       <ToastContainer
-      position="top-left"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick={false}
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="light"
+        position="top-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
       />
       <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]">
         <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-green-400 opacity-20 blur-[100px]"></div>
@@ -130,7 +130,7 @@ theme="light"
               src="https://cdn.lordicon.com/efxgwrkc.json"
               trigger="hover"
             ></lord-icon>
-            Add Password
+            Save Password
           </button>
         </div>
 
@@ -141,9 +141,10 @@ theme="light"
             <table className="w-full rounded-lg overflow-hidden">
               <thead className=" bg-green-800 text-white">
                 <tr>
-                  <th className="py-2">Site</th>
-                  <th className="py-2">Username</th>
-                  <th className="py-2">Password</th>
+                  <th className="py-2 text-start px-2">Site</th>
+                  <th className="py-2 text-start px-2">Username</th>
+                  <th className="py-2 text-start px-2">Password</th>
+                  <th className="py-2 text-start px-2">Actions</th>
                 </tr>
               </thead>
 
@@ -151,12 +152,17 @@ theme="light"
                 {passwordArray.map((item, index) => {
                   return (
                     <tr key={index}>
-                      <td className="py-2 border border-white text-center">
-                        <div className="flex justify-center items-center">
+                      <td className="py-2 px-2 border-2 border-white text-start">
+                        <div className="flex justify-between items-center">
                           <a href={item.site} target="_blank">
                             {item.site}
                           </a>
-                          <div className="lordicon cursor-pointer size- flex items-center justify-center" onClick={()=>{copyText(item.site)}}>
+                          <div
+                            className="lordicon cursor-pointer size- flex items-center justify-center"
+                            onClick={() => {
+                              copyText(item.site);
+                            }}
+                          >
                             <lord-icon
                               style={{
                                 width: "25px",
@@ -169,10 +175,15 @@ theme="light"
                           </div>
                         </div>
                       </td>
-                      <td className="py-2 border border-white text-center">
-                        <div className="flex justify-center items-center">
+                      <td className="py-2 px-2 border-2 border-white text-start">
+                        <div className="flex justify-between items-center">
                           <span>{item.username}</span>
-                          <div className="lordicon cursor-pointer size- flex items-center justify-center" onClick={()=>{copyText(item.username)}}>
+                          <div
+                            className="lordicon cursor-pointer size- flex items-center justify-center"
+                            onClick={() => {
+                              copyText(item.username);
+                            }}
+                          >
                             <lord-icon
                               style={{
                                 width: "25px",
@@ -185,10 +196,15 @@ theme="light"
                           </div>
                         </div>
                       </td>
-                      <td className="py-2 border border-white text-center">
-                        <div className="flex justify-center items-center">
+                      <td className="py-2 px-2 border-2 border-white text-start">
+                        <div className="flex justify-between items-center">
                           <span>{item.password}</span>
-                          <div className="lordicon cursor-pointer size- flex items-center justify-center" onClick={()=>{copyText(item.password)}}>
+                          <div
+                            className="lordicon cursor-pointer size- flex items-center justify-center"
+                            onClick={() => {
+                              copyText(item.password);
+                            }}
+                          >
                             <lord-icon
                               style={{
                                 width: "25px",
@@ -200,6 +216,26 @@ theme="light"
                             ></lord-icon>
                           </div>
                         </div>
+                      </td>
+
+                      <td className="py-2 px-2 border-2 border-white text-start">
+                        <div className="flex items-center justify-around">
+                              <span>
+                          <lord-icon
+                            src="https://cdn.lordicon.com/xyfswyxf.json"
+                            trigger="hover"
+                            style={{ width: "25px", height: "25px",padding: "3px", cursor: "pointer" }}
+                          ></lord-icon>
+                        </span>
+                        <span>
+                          <lord-icon
+                            src="https://cdn.lordicon.com/gwlusjdu.json"
+                            trigger="hover"
+                            style={{ width: "25px", height: "25px",padding: "3px", cursor: "pointer" }}
+                          ></lord-icon>
+                        </span>
+                        </div>
+                        
                       </td>
                     </tr>
                   );
