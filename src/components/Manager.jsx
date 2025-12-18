@@ -2,40 +2,37 @@ import React, { useEffect } from "react";
 import { useRef, useState } from "react";
 
 const Manager = () => {
-
-  const ref = useRef()
-  const passwordRef = useRef()
-  const [form, setform] = useState({site: "", username: "", password: ""})
-  const [passwordArray, setpasswordArray] = useState([])
-
+  const ref = useRef();
+  const passwordRef = useRef();
+  const [form, setform] = useState({ site: "", username: "", password: "" });
+  const [passwordArray, setpasswordArray] = useState([]);
 
   useEffect(() => {
     let passwords = localStorage.getItem("passwords");
-    
-    if(passwords){
-      setpasswordArray(JSON.parse(passwords))
+
+    if (passwords) {
+      setpasswordArray(JSON.parse(passwords));
     }
-  }, [])
-  
-  const showPassword = ()=>{
-    passwordRef.current.type = "text"
-    if(ref.current.src.includes("/icons/eye-slash.svg")){
-      passwordRef.current.type = "password"
-      ref.current.src = '/icons/eye.svg';
+  }, []);
+
+  const showPassword = () => {
+    passwordRef.current.type = "text";
+    if (ref.current.src.includes("/icons/eye-slash.svg")) {
+      passwordRef.current.type = "password";
+      ref.current.src = "/icons/eye.svg";
     } else {
-ref.current.src = "/icons/eye-slash.svg";
-    }  
-  }
+      ref.current.src = "/icons/eye-slash.svg";
+    }
+  };
 
+  const savePassword = () => {
+    setpasswordArray([...passwordArray, form]);
+    localStorage.setItem("passwords", JSON.stringify([...passwordArray, form]));
+  };
 
-  const savePassword = ()=>{
-    setpasswordArray([...passwordArray, form])
-    localStorage.setItem("passwords", JSON.stringify([...passwordArray, form]))
-  }
-
-  const handleChange = (e)=>{
-    setform({...form, [e.target.name]: e.target.value})
-  }
+  const handleChange = (e) => {
+    setform({ ...form, [e.target.name]: e.target.value });
+  };
 
   return (
     <div>
@@ -66,8 +63,8 @@ ref.current.src = "/icons/eye-slash.svg";
           />
           <div className="flex w-full justify-between gap-4">
             <input
-            value={form.username}
-            onChange={handleChange}
+              value={form.username}
+              onChange={handleChange}
               placeholder="Enter Username"
               className="bg-white rounded-full border border-green-500 w-1/2 px-4 py-1"
               type="text"
@@ -76,61 +73,114 @@ ref.current.src = "/icons/eye-slash.svg";
 
             <div className="relative">
               <input
-              ref={passwordRef}
-              value={form.password}
-              onChange={handleChange}
+                ref={passwordRef}
+                value={form.password}
+                onChange={handleChange}
                 placeholder="Enter Password"
                 className="bg-white rounded-full border border-green-500 w-full px-4 py-1"
                 type="password"
                 name="password"
               />
-              <span className="absolute right-0 top-1 cursor-pointer" onClick={showPassword}>
-                <img ref={ref} className="pt-1 px-2" width={35} src="/icons/eye.svg" alt="show" />
+              <span
+                className="absolute right-0 top-1 cursor-pointer"
+                onClick={showPassword}
+              >
+                <img
+                  ref={ref}
+                  className="pt-1 px-2"
+                  width={35}
+                  src="/icons/eye.svg"
+                  alt="show"
+                />
               </span>
             </div>
           </div>
-          <button onClick={savePassword} className="flex justify-center items-center bg-green-400 rounded-full px-6 py-2 w-fit hover:bg-green-300 gap-4 border-1 border-green-900">
+          <button
+            onClick={savePassword}
+            className="flex justify-center items-center bg-green-400 rounded-full px-6 py-2 w-fit hover:bg-green-300 gap-4 border-1 border-green-900"
+          >
             <lord-icon
               src="https://cdn.lordicon.com/efxgwrkc.json"
               trigger="hover"
             ></lord-icon>
             Add Password
-            
           </button>
         </div>
 
         <div className="passwords">
           <h2 className="font-bold text-2xl py-4">Your passwords</h2>
           {passwordArray.length === 0 && <div>No passwords to show</div>}
-          {passwordArray.length != 0 && <table className="w-full rounded-lg overflow-hidden">
+          {passwordArray.length != 0 && (
+            <table className="w-full rounded-lg overflow-hidden">
+              <thead className=" bg-green-800 text-white">
+                <tr>
+                  <th className="py-2">Site</th>
+                  <th className="py-2">Username</th>
+                  <th className="py-2">Password</th>
+                </tr>
+              </thead>
 
-            <thead className=" bg-green-800 text-white">
-              <tr>
-                <th className="py-2">Site</th>
-                <th className="py-2">Username</th>
-                <th className="py-2">Password</th>
-              </tr>
-            </thead>
-
-            <tbody className="bg-green-100">
-              {passwordArray.map((item, index)=>{
-                return (
-                   <tr key={index}>
-                <td className="py-2 border border-white text-center"><a href={item.site} target="_blank">{item.site}</a></td>
-                <td className="py-2 border border-white text-center">{item.username}</td>
-                <td className="py-2 border border-white text-center">{item.password}</td>
-              </tr>
-                )
-                
-              })}
-  
-            </tbody>
-
-          </table>}
-          
+              <tbody className="bg-green-100">
+                {passwordArray.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td className="py-2 border border-white text-center">
+                        <div className="flex justify-center items-center">
+                          <a href={item.site} target="_blank">
+                            {item.site}
+                          </a>
+                          <div className="cursor-pointer size- flex items-center justify-center">
+                            <lord-icon
+                              style={{
+                                width: "25px",
+                                height: "25px",
+                                padding: "3px",
+                              }}
+                              src="https://cdn.lordicon.com/iykgtsbt.json"
+                              trigger="hover"
+                            ></lord-icon>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="py-2 border border-white text-center">
+                        <div className="flex justify-center items-center">
+                          <span>{item.username}</span>
+                          <div className="cursor-pointer size- flex items-center justify-center">
+                            <lord-icon
+                              style={{
+                                width: "25px",
+                                height: "25px",
+                                padding: "3px",
+                              }}
+                              src="https://cdn.lordicon.com/iykgtsbt.json"
+                              trigger="hover"
+                            ></lord-icon>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="py-2 border border-white text-center">
+                        <div className="flex justify-center items-center">
+                          <span>{item.password}</span>
+                          <div className="cursor-pointer size- flex items-center justify-center">
+                            <lord-icon
+                              style={{
+                                width: "25px",
+                                height: "25px",
+                                padding: "3px",
+                              }}
+                              src="https://cdn.lordicon.com/iykgtsbt.json"
+                              trigger="hover"
+                            ></lord-icon>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
         </div>
-
-
       </div>
     </div>
   );
