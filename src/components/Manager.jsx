@@ -15,6 +15,10 @@ const Manager = () => {
     }
   }, []);
 
+  const copyText = (text)=>{
+    navigator.clipboard.writeText(text)
+  }
+
   const showPassword = () => {
     passwordRef.current.type = "text";
     if (ref.current.src.includes("/icons/eye-slash.svg")) {
@@ -129,7 +133,7 @@ const Manager = () => {
                           <a href={item.site} target="_blank">
                             {item.site}
                           </a>
-                          <div className="cursor-pointer size- flex items-center justify-center">
+                          <div className="lordicon cursor-pointer size- flex items-center justify-center" onClick={()=>{copyText(item.site)}}>
                             <lord-icon
                               style={{
                                 width: "25px",
@@ -145,7 +149,7 @@ const Manager = () => {
                       <td className="py-2 border border-white text-center">
                         <div className="flex justify-center items-center">
                           <span>{item.username}</span>
-                          <div className="cursor-pointer size- flex items-center justify-center">
+                          <div className="lordicon cursor-pointer size- flex items-center justify-center" onClick={()=>{copyText(item.username)}}>
                             <lord-icon
                               style={{
                                 width: "25px",
@@ -161,7 +165,7 @@ const Manager = () => {
                       <td className="py-2 border border-white text-center">
                         <div className="flex justify-center items-center">
                           <span>{item.password}</span>
-                          <div className="cursor-pointer size- flex items-center justify-center">
+                          <div className="lordicon cursor-pointer size- flex items-center justify-center" onClick={()=>{copyText(item.password)}}>
                             <lord-icon
                               style={{
                                 width: "25px",
