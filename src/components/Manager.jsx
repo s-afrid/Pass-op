@@ -46,8 +46,12 @@ const Manager = () => {
     localStorage.setItem("passwords", JSON.stringify([...passwordArray, {...form, id: uuidv4()}]));
   };
 
-  const deletePassword = () => {
+  const deletePassword = (id) => {
+    console.log(id)
+  }
 
+  const editPassword = (id)=>{
+    console.log(id)
   }
 
   const handleChange = (e) => {
@@ -225,14 +229,14 @@ const Manager = () => {
 
                       <td className="py-2 px-2 border-2 border-white text-start">
                         <div className="flex items-center justify-around">
-                              <span>
+                              <span onClick={()=>{deletePassword(item.id)}}>
                           <lord-icon
                             src="https://cdn.lordicon.com/xyfswyxf.json"
                             trigger="hover"
                             style={{ width: "25px", height: "25px",padding: "3px", cursor: "pointer" }}
                           ></lord-icon>
                         </span>
-                        <span>
+                        <span onClick={()=>{editPassword(item.id)}}>
                           <lord-icon
                             src="https://cdn.lordicon.com/gwlusjdu.json"
                             trigger="hover"
