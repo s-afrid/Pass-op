@@ -1,5 +1,5 @@
 const express = require('express')
-var cors = require('cors')
+const cors = require('cors')
 require('dotenv').config()
 const { MongoClient } = require('mongodb')
 const bodyParser = require('body-parser')
@@ -35,10 +35,10 @@ app.post('/', async (req, res) => {
 
 //delete passwords
 app.delete('/', async (req, res) => {
-    const password = req.body
+    const {id} = req.body
     const db = client.db(dbname)
     const collection = db.collection('passwords')
-    const findResult = await collection.deleteOne(password)
+    const findResult = await collection.deleteOne({id: id})
     res.json({success: true, message: findResult})
 })
 
