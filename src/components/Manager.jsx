@@ -53,6 +53,7 @@ const Manager = () => {
 
   const editPassword = (id)=>{
     setform(passwordArray.filter(item=>item.id===id)[0])
+     setpasswordArray(passwordArray.filter(item=>item.id!==id))
   }
 
   const handleChange = (e) => {
