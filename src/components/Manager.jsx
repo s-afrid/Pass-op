@@ -13,6 +13,7 @@ const Manager = () => {
     let passwords = localStorage.getItem("passwords");
 
     if (passwords) {
+      
       setpasswordArray(JSON.parse(passwords));
     }
   }, []);
@@ -54,10 +55,11 @@ const Manager = () => {
     let c = confirm("Do you really wanted to delete this password?");
     if (c) {
       setpasswordArray(passwordArray.filter((item) => item.id !== id));
+      console.log(passwordArray.length)
       localStorage.setItem(
         "passwords",
         JSON.stringify(
-          setpasswordArray(passwordArray.filter((item) => item.id !== id))
+          passwordArray.filter((item) => item.id !== id)
         )
       );
     }
