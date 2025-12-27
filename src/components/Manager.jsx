@@ -47,6 +47,7 @@ const Manager = () => {
       "passwords",
       JSON.stringify([...passwordArray, { ...form, id: uuidv4() }])
     );
+    setform({ site: "", username: "", password: "" })
   };
 
   const deletePassword = (id) => {
