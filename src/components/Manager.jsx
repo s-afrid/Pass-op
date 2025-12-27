@@ -47,11 +47,12 @@ const Manager = () => {
   };
 
   const deletePassword = (id) => {
-    console.log(id)
+    setpasswordArray(passwordArray.filter(item=>item.id!==id))
+    localStorage.setItem("passwords", JSON.stringify(setpasswordArray(passwordArray.filter(item=>item.id!==id))))
   }
 
   const editPassword = (id)=>{
-    console.log(id)
+    setform(passwordArray.filter(item=>item.id===id)[0])
   }
 
   const handleChange = (e) => {
