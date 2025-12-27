@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useRef, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 const Manager = () => {
   const ref = useRef();
@@ -42,19 +42,30 @@ const Manager = () => {
   };
 
   const savePassword = () => {
-    setpasswordArray([...passwordArray, {...form, id: uuidv4()}]);
-    localStorage.setItem("passwords", JSON.stringify([...passwordArray, {...form, id: uuidv4()}]));
+    setpasswordArray([...passwordArray, { ...form, id: uuidv4() }]);
+    localStorage.setItem(
+      "passwords",
+      JSON.stringify([...passwordArray, { ...form, id: uuidv4() }])
+    );
   };
 
   const deletePassword = (id) => {
-    setpasswordArray(passwordArray.filter(item=>item.id!==id))
-    localStorage.setItem("passwords", JSON.stringify(setpasswordArray(passwordArray.filter(item=>item.id!==id))))
-  }
+    let c = confirm("Do you really wanted to delete this password?");
+    if (c) {
+      setpasswordArray(passwordArray.filter((item) => item.id !== id));
+      localStorage.setItem(
+        "passwords",
+        JSON.stringify(
+          setpasswordArray(passwordArray.filter((item) => item.id !== id))
+        )
+      );
+    }
+  };
 
-  const editPassword = (id)=>{
-    setform(passwordArray.filter(item=>item.id===id)[0])
-     setpasswordArray(passwordArray.filter(item=>item.id!==id))
-  }
+  const editPassword = (id) => {
+    setform(passwordArray.filter((item) => item.id === id)[0]);
+    setpasswordArray(passwordArray.filter((item) => item.id !== id));
+  };
 
   const handleChange = (e) => {
     setform({ ...form, [e.target.name]: e.target.value });
@@ -231,22 +242,39 @@ const Manager = () => {
 
                       <td className="py-2 px-2 border-2 border-white text-start">
                         <div className="flex items-center justify-around">
-                              <span onClick={()=>{deletePassword(item.id)}}>
-                          <lord-icon
-                            src="https://cdn.lordicon.com/xyfswyxf.json"
-                            trigger="hover"
-                            style={{ width: "25px", height: "25px",padding: "3px", cursor: "pointer" }}
-                          ></lord-icon>
-                        </span>
-                        <span onClick={()=>{editPassword(item.id)}}>
-                          <lord-icon
-                            src="https://cdn.lordicon.com/gwlusjdu.json"
-                            trigger="hover"
-                            style={{ width: "25px", height: "25px",padding: "3px", cursor: "pointer" }}
-                          ></lord-icon>
-                        </span>
+                          <span
+                            onClick={() => {
+                              deletePassword(item.id);
+                            }}
+                          >
+                            <lord-icon
+                              src="https://cdn.lordicon.com/xyfswyxf.json"
+                              trigger="hover"
+                              style={{
+                                width: "25px",
+                                height: "25px",
+                                padding: "3px",
+                                cursor: "pointer",
+                              }}
+                            ></lord-icon>
+                          </span>
+                          <span
+                            onClick={() => {
+                              editPassword(item.id);
+                            }}
+                          >
+                            <lord-icon
+                              src="https://cdn.lordicon.com/gwlusjdu.json"
+                              trigger="hover"
+                              style={{
+                                width: "25px",
+                                height: "25px",
+                                padding: "3px",
+                                cursor: "pointer",
+                              }}
+                            ></lord-icon>
+                          </span>
                         </div>
-                        
                       </td>
                     </tr>
                   );
