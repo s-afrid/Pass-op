@@ -21,7 +21,7 @@ const Manager = () => {
   const copyText = (text) => {
     navigator.clipboard.writeText(text);
     toast.success("Copied to Clipboard!", {
-      position: "top-left",
+      position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: false,
@@ -48,7 +48,17 @@ const Manager = () => {
       "passwords",
       JSON.stringify([...passwordArray, { ...form, id: uuidv4() }])
     );
-    setform({ site: "", username: "", password: "" })
+    setform({ site: "", username: "", password: "" });
+    toast.success("Password saved", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: "",
+      theme: "dark",
+    });
   };
 
   const deletePassword = (id) => {
@@ -63,6 +73,16 @@ const Manager = () => {
         )
       );
     }
+    toast.info("Password Deleted", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: "",
+      theme: "dark",
+    });
   };
 
   const editPassword = (id) => {
